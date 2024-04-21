@@ -1,12 +1,10 @@
 import React from "react";
-import { useColorScheme, Text } from "react-native";
+import { Text } from "react-native";
 import Icon, { IconType } from "react-native-dynamic-vector-icons";
 import { isReadyRef, navigationRef } from "react-navigation-helpers";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import DetailScreen from "@screens/detail/DetailScreen";
-// ? Screens
 import HomeScreen from "@screens/home/HomeScreen";
 import PostScreen from "@screens/post/PostScreen";
 import ChatScreen from "@screens/chat/ChatScreen";
@@ -19,12 +17,11 @@ import ActivityScreen from "@screens/activity/ActivityScreen";
 import { SCREENS } from "@shared-constants";
 import { DarkTheme, LightTheme, palette } from "@theme/themes";
 
-// ? If you want to use stack or tab or both
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
 const Navigation = () => {
-  const scheme = useColorScheme();
+  // const scheme = useColorScheme();
   // const isDarkMode = scheme === "dark";
   const isDarkMode = false;
 
@@ -34,12 +31,10 @@ const Navigation = () => {
 
   const renderTabIcon = (
     route: any,
-    focused: boolean,
     color: string,
     size: number,
   ) => {
     let iconName = "home";
-    let fontSize;
     switch (route.name) {
       case SCREENS.HOME:
         iconName = "home-outline";
@@ -74,8 +69,8 @@ const Navigation = () => {
       <Tab.Navigator
         screenOptions={({ route }) => ({
           headerShown: false,
-          tabBarIcon: ({ focused, color, size }) =>
-            renderTabIcon(route, focused, color, size),
+          tabBarIcon: ({ color, size }) =>
+            renderTabIcon(route, color, size),
           tabBarActiveTintColor: palette.primary,
           tabBarInactiveTintColor: palette.black,
           tabBarLabel: ({focused}) => <Text style={{
@@ -107,9 +102,6 @@ const Navigation = () => {
     >
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name={SCREENS.HOME} component={renderTabNavigation} />
-        <Stack.Screen name={SCREENS.DETAIL}>
-          {(props) => <DetailScreen {...props} />}
-        </Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
   );

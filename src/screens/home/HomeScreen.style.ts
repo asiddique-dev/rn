@@ -1,25 +1,19 @@
-import { ImageStyle, StyleSheet, TextStyle, ViewStyle } from "react-native";
+import { StyleSheet } from "react-native";
 import { ScreenWidth } from "@freakycoder/react-native-helpers";
 import { ExtendedTheme } from "@react-navigation/native";
 
-interface Style {
-  container: ViewStyle;
-  titleTextStyle: TextStyle;
-  buttonStyle: ViewStyle;
-  buttonTextStyle: TextStyle;
-  header: ViewStyle;
-  contentContainer: ViewStyle;
-  listContainer: ViewStyle;
-  profilePicImageStyle: ImageStyle;
-}
-
 export default (theme: ExtendedTheme) => {
   const { colors } = theme;
-  return StyleSheet.create<Style>({
+  return StyleSheet.create({
     container: {
       flex: 1,
       alignItems: "center",
       backgroundColor: colors.background,
+    },
+    scrollVew: {
+      marginHorizontal: 10,
+      flex: 1,
+      marginBottom:-35
     },
     titleTextStyle: {
       fontSize: 32,
@@ -49,10 +43,8 @@ export default (theme: ExtendedTheme) => {
       flexDirection: "row",
       alignItems: "center",
       justifyContent: "space-between",
-    },
-    contentContainer: {
-      flex: 1,
-      marginTop: 16,
+      zIndex: 1
+
     },
     listContainer: {
       marginTop: 8,
@@ -62,5 +54,74 @@ export default (theme: ExtendedTheme) => {
       width: 50,
       borderRadius: 30,
     },
+    dropdownStyle: {
+      borderWidth: 0,
+      backgroundColor: colors.background,
+    },
+    dropdownContainer: {
+      width: 110,
+      backgroundColor: colors.background,
+
+    },
+    location: {
+      flexDirection: "row",
+      alignItems: "center",
+      zIndex: 1
+    },
+    adImg: {
+      width: '100%',
+      height: 200
+    },
+
+
+    main: {
+      flex: 1
+    },
+
+    showroomHeadingText:{
+      fontSize:16,
+      fontWeight: 'bold'
+    },
+    showroomHeader:{
+      flexDirection:'row',
+      justifyContent: 'space-between',
+      alignItems: 'center'
+    },
+    primaryText:{
+      color: colors.primary
+    },
+    showroomContainer:{
+      flexDirection: 'column',
+      margin:5,
+      justifyContent:'flex-start',
+      alignItems: 'flex-start',
+    },
+    carImg: {
+      height: 120,
+      width: 150,
+    },
+    showroomDetails:{
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    logo:{
+      height: 50,
+      width: 52
+    },
+    showroomNameContainer: {
+      flex:1,
+      flexDirection: 'column',
+      marginHorizontal:5,
+      marginVertical:0,
+      paddingVertical:0,
+    },
+    showroomName: {
+      fontSize: 14,
+      color: colors.black
+    },
+    showroomDescription:{
+      fontSize: 12
+    }
   });
 };

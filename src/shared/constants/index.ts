@@ -7,3 +7,5 @@ export const SCREENS = {
   USER: "User",
   DETAIL: "Detail"
 };
+
+export const DEFAULTCITY = 'Dubai';
